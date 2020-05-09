@@ -1,8 +1,27 @@
-import React from 'react';
+import React,{useState} from "react";
 import ReactDOM from 'react-dom';
+
+import Map from "./components/Map";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 import './styles/index.css';
-import App from './components/App';
 import * as serviceWorker from './test/serviceWorker';
+
+const App=()=>{
+    
+  const [theme,setTheme]=useState("dark");
+
+
+
+  return(
+      <div className={theme}> 
+          <Header theme={theme} setTheme={setTheme}/>
+          <Map theme={theme}/>
+          <Footer />
+      </div>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +30,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

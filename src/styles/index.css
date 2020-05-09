@@ -1,0 +1,28 @@
+@import url("header.css");
+@import url("map.css");
+@import url("mapsControl.css");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dark{
+    background-color:#1F2028;
+    color:#EEEEEE;
+}
+
+.light{
+    color:#1F2028;
+    background-color:#EEEEEE;
+}
+
+.dark,
+.light{
+    transition: background-color .3s linear, color .3s linear;
+}
+
+
+
+
