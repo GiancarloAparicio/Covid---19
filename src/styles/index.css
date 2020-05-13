@@ -1,6 +1,7 @@
 @import url("header.css");
-@import url("map.css");
 @import url("mapsControl.css");
+@import url("mapStats.css");
+@import url("mapCountry.css");
 
 *{
     margin: 0;

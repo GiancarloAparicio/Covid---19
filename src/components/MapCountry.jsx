@@ -14,7 +14,7 @@ class MapCountry extends Component {
       this.zoomReset=React.createRef();
 
       this.state = {
-        selectedCountries: {}
+        selectedCountries: {PE: true}
       };
 
     }
@@ -63,8 +63,9 @@ class MapCountry extends Component {
     }
    
     toggleCountry = (country) => {
-        /****************************MANDAR AL STATE PADRE******************* */
-        console.log(country.id)
+       
+      this.props.setCountry(country.id)
+
       const { selectedCountries } = this.state;
       
       this.setState({
