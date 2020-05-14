@@ -64,3 +64,10 @@ export const Band=()=>{
        </i>
     );
 }
+
+export const Loading=()=>{
+
+    return(
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 512 512" ><rect x="226" width="60" height="120" fill="#ABECEC"/><rect x="87.4" y="57.4" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 283.4515 117.4106)" width="60" height="120" fill="#ABECEC"/><rect y="226" width="120" height="60" fill="#42C8C6"/><rect x="57.4" y="364.6" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 479.4362 590.579)" width="120" height="60" fill="#42C8C6"/><rect x="226" y="392" width="60" height="120" fill="#02ACAB"/><rect x="364.6" y="334.6" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 952.606 394.5977)" width="60" height="120" fill="#02ACAB"/><rect x="392" y="226" width="120" height="60" fill="#027372"/></svg>
+    );
+}

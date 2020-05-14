@@ -1,28 +1,34 @@
-import React,{useEffect} from "react";
-import {People,Band} from "./Icons";
+import React from "react";
+import {People,Band,Loading} from "./Icons";
+
 
 const MapStats=(props)=>{
 
     const dataCovid=props.dataCovid[props.dataCovid.length - 1]
-
-    useEffect(()=>{
-        console.log(dataCovid)
-    },[dataCovid])
-
+    const dataCountry=props.dataCountry
 
     return(
         <div className="map-stats">
-            <p className="country">{dataCovid?.Country}</p>
-            <div className="country-people">
-                <People />
-                <p>1845000</p>
+            <img src={dataCountry?.flag}
+                 alt={dataCovid?.CountryCode} 
+                 className="country-flag"/>
+
+            <div className="country-info">
+                <p className="country-name">{dataCovid?.Country}</p>
+                
+                <div className="country-data">
+                    <div className="country-data-people">
+                        <People />
+                        <p className="data-people">{dataCountry?.population}</p>
+                    </div>
+                    <div className="country-data-flag">
+                        <Band />
+                        <p className="data-flag">{dataCountry?.area}</p>
+                    </div>
+                </div>       
             </div>
-            <div className="country-band">
-                <Band />
-                <p>4000kb</p> 
-                {}
             
-            </div>
+            
         </div>
     )
 }

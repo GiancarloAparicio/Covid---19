@@ -13,7 +13,7 @@ const Map=(props)=>{
   const [loading,setLoading]=useState(false);
 
   const ApiCovid=`https://api.covid19api.com/dayone/country/${country}`;
-  const ApiCountry=`https://api.covid19api.com/dayone/country/${country}`
+  const ApiCountry=`https://restcountries.eu/rest/v2/alpha/${country}`
 
  
 
@@ -40,7 +40,7 @@ const Map=(props)=>{
       })
       .catch(error => console.log('error', error));
     }
-    
+
     getDataCovid();
     getCountryInfo();
 
@@ -51,7 +51,7 @@ const Map=(props)=>{
     <div className="map">
       {loading? "CARGANDO...":""}
       <MapCountry theme={props.theme} country={country} setCountry={setCountry} />
-      <MapStats dataCovid={dataCovid} dataCountry={dataCountry}/>
+      <MapStats dataCovid={dataCovid} dataCountry={dataCountry} loading={loading}/>
     </div>
   )
 }
