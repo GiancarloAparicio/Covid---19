@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import ReactDOM from 'react-dom';
 
 import Map from "./components/Map";
@@ -12,10 +12,14 @@ const App=()=>{
     
   const [theme,setTheme]=useState("dark");
 
-
+  useEffect(()=>{
+    let $body=document.querySelector("body");
+    $body.className=theme;
+    
+  });
 
   return(
-      <div className={theme}> 
+      <div> 
           <Header theme={theme} setTheme={setTheme}/>
           <Map theme={theme}/>
           <Footer />

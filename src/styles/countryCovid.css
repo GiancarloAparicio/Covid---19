@@ -1,0 +1,61 @@
+.country-covid{
+    width: 100%;
+}
+
+.covid-case{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.covid-stats{
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 15px;
+    padding-bottom: 20px;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.covid-stats .icon{
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.yellow{
+    color: #F0C302;
+    grid-area:confirmados;
+}
+
+.red{
+    color:#FF3A3A;
+    grid-area:fallecidos;
+}
+
+.blue{
+    color:#1273EB;
+    grid-area:activos;
+}
+
+.green{
+    color:#00D098;
+    grid-area:recuperados;
+}
+
+
+.country-covid-grid{
+
+    display:grid;
+    grid-template: 2/2;
+    grid-template-areas: "confirmados fallecidos"
+                         "activos recuperados" ;
+    grid-column-gap:10px;
+    grid-row-gap:0px;
+
+    width: 80%;
+}
+

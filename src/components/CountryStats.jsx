@@ -1,20 +1,19 @@
 import React from "react";
-import {People,Band,Loading} from "./Icons";
+import {People,Band} from "./Icons";
 
 
-const MapStats=(props)=>{
+const CountryStats=(props)=>{
 
-    const dataCovid=props.dataCovid[props.dataCovid.length - 1]
     const dataCountry=props.dataCountry
 
     return(
-        <div className="map-stats">
+        <div className="map-stats card">
             <img src={dataCountry?.flag}
-                 alt={dataCovid?.CountryCode} 
+                 alt={dataCountry?.alpha2Code} 
                  className="country-flag"/>
 
             <div className="country-info">
-                <p className="country-name">{dataCovid?.Country}</p>
+                <p className="country-name">{dataCountry?.name}</p>
                 
                 <div className="country-data">
                     <div className="country-data-people">
@@ -26,11 +25,9 @@ const MapStats=(props)=>{
                         <p className="data-flag">{dataCountry?.area}</p>
                     </div>
                 </div>       
-            </div>
-            
-            
+            </div>   
         </div>
     )
 }
 
-export default MapStats;
+export default CountryStats;

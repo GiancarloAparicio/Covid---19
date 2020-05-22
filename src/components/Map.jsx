@@ -1,7 +1,9 @@
 
 import React,{useState,useEffect} from "react";
 import MapCountry from "./MapCountry";
-import MapStats from "./MapStats";
+import CountryStats from "./CountryStats";
+import CountryCovid from "./CountryCovid";
+import WorldStats from "./WorldStats";
 
 
 const Map=(props)=>{
@@ -10,10 +12,12 @@ const Map=(props)=>{
 
   const [dataCovid,setDataCovid]=useState([])
   const [dataCountry,setDataCountry]=useState([])
+ 
   const [loading,setLoading]=useState(false);
 
-  const ApiCovid=`https://api.covid19api.com/dayone/country/${country}`;
-  const ApiCountry=`https://restcountries.eu/rest/v2/alpha/${country}`
+  const ApiCovid=`https://api.covid19api.com/total/country/${country}`;
+  const ApiCountry=`https://restcountries.eu/rest/v2/alpha/${country}`;
+  
 
  
 
@@ -31,7 +35,7 @@ const Map=(props)=>{
   
     }
 
-    const getCountryInfo=()=>{
+    const getInfoCountry=()=>{
       fetch(ApiCountry,{method:'get'})
       .then(response => response.json())
       .then(data => {
@@ -42,16 +46,18 @@ const Map=(props)=>{
     }
 
     getDataCovid();
-    getCountryInfo();
+    getInfoCountry();
 
   },[ApiCovid,ApiCountry,country])
 
  
   return(
     <div className="map">
-      {loading? "CARGANDO...":""}
+      {loading? console.log("cargando"):""}
       <MapCountry theme={props.theme} country={country} setCountry={setCountry} />
-      <MapStats dataCovid={dataCovid} dataCountry={dataCountry} loading={loading}/>
+      <WorldStats />
+      <CountryStats dataCountry={dataCountry} loading={loading}/>
+      <CountryCovid dataCovid={dataCovid} />
     </div>
   )
 }
