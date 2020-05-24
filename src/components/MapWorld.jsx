@@ -4,25 +4,35 @@ import svgPanZoom from "svg-pan-zoom";
 import {ZoomIn,ZoomOut,ZoomReset} from "./Icons";
 
 
-class MapCountry extends Component {
+import "../scss/mapWorld.scss";
+import "../scss/mapWorldControl.scss";
+
+
+class MapWorld extends Component {
     constructor(props){
       super();
 
+      /**Creamos referencias para poder controlar el SVG con JavaScript */
       this.mapSvg=React.createRef();
       this.zoomIn=React.createRef();
       this.zoomOut=React.createRef();
       this.zoomReset=React.createRef();
 
+      /**Variable que almacenara el o los paises que el usuario eliga */
       this.state = {
         selectedCountries: {PE: true}
       };
 
     }
 
+
+    /**Manipulamos el SVG para poder movernos atraves de el (CONFIGURACION) */
     beforePan = function(oldPan, newPan){
         let gutterWidth = 100;
         let gutterHeight = 100;
 
+
+        /**Limitamos el movimiento de SVG para que tenga un maximo */
         let sizes = this.getSizes()
         let leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
 
@@ -41,6 +51,7 @@ class MapCountry extends Component {
 
     componentDidMount(){
 
+        /**Selecionamos el SVG y le damos la configuracion previa */
         let mapWorld= svgPanZoom(this.mapSvg.current, {
             panEnabled: true
           , zoomEnabled: true
@@ -56,12 +67,15 @@ class MapCountry extends Component {
           });
 
         
+          /**Controladores para hacer zoom,zoomIn,... */
           this.zoomIn.current.addEventListener("click",()=>mapWorld.zoomIn())
           this.zoomOut.current.addEventListener("click",()=>mapWorld.zoomOut())
           this.zoomReset.current.addEventListener("click",()=> mapWorld.resetZoom())
         
     }
    
+
+    /**Guardamos el pais selecionado (Se puede elegir mas de un pais) */
     toggleCountry = (country) => {
        
       this.props.setCountry(country.id)
@@ -69,13 +83,16 @@ class MapCountry extends Component {
       const { selectedCountries } = this.state;
       
       this.setState({
+        
         selectedCountries: {
+         // ...selectedCountries,  /**Selecionar mas de un pais*/
           [country.id]: !selectedCountries[country.id]
         }
       });
     };
 
     
+    /**Renderizamos el mapa SVG */
     render() {
       const { selectedCountries } = this.state;
       
@@ -105,9 +122,9 @@ class MapCountry extends Component {
       ));
       return (
         
-      <div className="map-svg">
+      <div className="mapSVG">
         <svg
-         className="country"
+         className="worldSVG"
          xmlns="http://www.w3.org/2000/svg"
          height="400"
           width="800"
@@ -116,7 +133,9 @@ class MapCountry extends Component {
         >
         {mapCountries}
         </svg>
-        <div className="mapsControl">
+
+        {/**Controles para poder hacer zoom,zoomIn,... */}
+        <div className="mapsWorldControl">
             <button className="icon" ref={this.zoomIn}>
                 <ZoomIn />
             </button>
@@ -136,4 +155,4 @@ class MapCountry extends Component {
     }
   }
    
-  export default MapCountry;
+  export default MapWorld;

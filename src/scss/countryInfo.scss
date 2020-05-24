@@ -1,0 +1,49 @@
+.countryInfo{
+    display: grid;
+    grid-template: 1/2;
+    grid-template-areas:   "flag stats";
+
+    padding: 15px;
+
+    &_flag{
+        display: block;
+
+        width: 100px;
+        height: 70px;
+    
+        margin: auto;
+    
+        grid-area: flag;
+    }
+
+    &_data{
+        grid-area: stats;
+    }
+}
+
+.countryName{
+    font-size: 28px;
+    text-align: center;
+}
+
+.countryStats{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &_population,
+    &_flag{
+        display: flex;
+        justify-content: space-around;
+
+        font-size: 14px;
+
+        margin: 10px;
+    }
+
+    .icon{
+        width: 15px;
+        height: 15px;
+    }
+
+}

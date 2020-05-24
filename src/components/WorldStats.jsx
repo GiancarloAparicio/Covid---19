@@ -1,38 +1,37 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import {Confirmados,Fallecidos,Recuperados} from "./Icons";
+import useFetch from "../hooks/useFetch";
+
+import "../scss/worldStats.scss";
 
 
 const WorldStats=(props)=>{
 
-    const [dataWorld,setDataWorld]=useState({});
+    /*Creamos variables donde se alojara la data*/ 
     const ApiWorld=`https://api.covid19api.com/world/total`;
 
-    useEffect(()=>{
-        const getDataWorld=()=>{
-            fetch(ApiWorld,{method:'get'})
-            .then(response => response.json())
-            .then(data => {
-                setDataWorld(data)
-            })
-            .catch(error => console.log('error', error));
-          }
-          getDataWorld();
-         
-    },[ApiWorld]);
 
+    /*Consultamos la data ala API*/
+    const dataWorld = useFetch(ApiWorld,{})
+  
+ 
+    /*Retornamos la informacion de covid de todo el mundo*/
     return(
-        <div className="WorldStats card">
+        <div className="worldStats card">
            
-            <p className="WorldStats-title">Datos mundiales</p> 
-            <div className="WorldStats-stats">
-                <p className="WorldStats-text yellow">
-                    Confirmados: <strong> {dataWorld?.TotalConfirmed}</strong> <Confirmados />
+            <p className="worldStats_title">Datos mundiales</p> 
+            <div className="worldStats_stats">
+
+                <p className="worldStats_text yellow">
+                    Confirmados: <strong> {dataWorld?.data?.TotalConfirmed}</strong> <Confirmados />
                 </p>
-                <p className="WorldStats-text red">
-                    Fallecidos: <strong> {dataWorld?.TotalDeaths}</strong> <Fallecidos />
+
+                <p className="worldStats_text red">
+                    Fallecidos: <strong> {dataWorld?.data?.TotalDeaths}</strong> <Fallecidos />
                 </p>
-                <p className="WorldStats-text green">
-                    Recuperados: <strong> {dataWorld?.TotalRecovered}</strong> <Recuperados />
+
+                <p className="worldStats_text green">
+                    Recuperados: <strong> {dataWorld?.data?.TotalRecovered}</strong> <Recuperados />
                 </p>
             </div>
         </div>

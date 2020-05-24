@@ -1,0 +1,88 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color:#EEEEEE;
+}
+
+.dark{
+    background-color:#19222B;
+    
+}
+
+.light{
+   
+    background-color:#EEEEEE;
+
+    header{
+        background-color: #206ABE;      
+    }
+}
+
+.dark,
+.light,
+header{
+    transition: background-color .3s linear, color .3s linear;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    font-weight: blod;
+    text-align: center;
+}
+
+.card{
+    background-color:#19222B;
+   
+    box-shadow: 0px 0px 0px hsla(0,0%,100%,0.05),
+                0px 0px 0px rgba(0,0,0,0.5),
+                inset -5px -5px 10px hsla(0,0%,100%,0.05),
+                inset 5px 5px 15px rgba(0,0,0,0.5);
+
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.icon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+                0 3px 1px -2px rgba(0,0,0,0.12), 
+                0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+
+
+svg{
+    width: 100%;
+    height: 100%;
+}
+
+
+.yellow{
+    color: #F0C302;
+    grid-area:confirmados;
+}
+
+.red{
+    color:#FF3A3A;
+    grid-area:fallecidos;
+}
+
+.blue{
+    color:#1273EB;
+    grid-area:activos;
+}
+
+.green{
+    color:#00D098;
+    grid-area:recuperados;
+}

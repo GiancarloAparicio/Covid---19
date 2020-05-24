@@ -1,45 +1,56 @@
 import React from "react";
 import {Confirmados,Activos,Fallecidos,Recuperados} from "./Icons";
 
+import "../scss/countryInfoCovid.scss";
+
+
 const CountryCovid=(props)=>{
 
+    /*Informacion del covid del pais selecionado*/
     const dataCovid=props.dataCovid[props.dataCovid.length - 1]
 
+
+
+    /*Template para cada caja de informacion (muertos,infectados,...)*/
+    const CountryBoxData=(props)=>{
+      let boxData= `countryCovid_box_data ${props.color}`;
+  
+      return(
+        <div className=" countryCovid_box card ">
+          <p className="countryCovid_box_title">{props.title}</p>
+          <div className={boxData}>
+            <props.icon />
+            <p> {dataCovid? dataCovid[props.value] :"0"} </p>
+         </div>
+      </div>
+      );
+    }
+
+
+
+    /*Retornamos grid-template con la informacion del covid por pais*/
     return(
-        <div className="country-covid-grid">
+        <div className="countryCovid_grid">
+
+          <CountryBoxData color="yellow"
+                          title="Confirmados"
+                          icon={Confirmados} 
+                          value="Confirmed"/>
             
-
-          <div className=" country-covid card ">
-            <p className="covid-case">Confirmados</p>
-            <div className="covid-stats yellow">
-                <Confirmados />
-                <p> {dataCovid? dataCovid.Confirmed :"0"} </p>
-            </div>
-          </div>
-
-          <div className=" country-covid card ">
-            <p className="covid-case">Fallecidos</p>
-            <div className="covid-stats red">
-                <Fallecidos />
-                <p> {dataCovid? dataCovid.Deaths:"0"} </p>
-            </div>
-          </div>
-
-          <div className=" country-covid card ">
-            <p className="covid-case ">Activos</p>
-            <div className="covid-stats blue">
-                <Activos />
-                <p> {dataCovid? dataCovid.Active:"0"} </p>
-            </div>
-          </div>
-
-          <div className=" country-covid card ">
-            <p className="covid-case">Recuperados</p>
-            <div className="covid-stats green">
-                <Recuperados />
-                <p> {dataCovid? dataCovid.Recovered:"0"} </p>
-            </div>
-          </div>
+          <CountryBoxData color="red"
+                          title="Fallecidos"
+                          icon={Fallecidos}
+                          value="Deaths"/>
+          
+          <CountryBoxData color="blue"
+                          title="Activos"
+                          icon={Activos}
+                          value="Active"/>
+          
+          <CountryBoxData color="green"
+                          title="Recuperados"
+                          icon={Recuperados}
+                          value="Recovered"/>
 
         </div>
         

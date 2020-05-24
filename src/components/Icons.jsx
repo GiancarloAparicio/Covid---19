@@ -1,5 +1,7 @@
 import React from "react";
 
+/**Lista de icons en formato SVG */
+
 export const Sun=()=>{
 
     return(

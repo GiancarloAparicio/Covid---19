@@ -1,0 +1,46 @@
+.countryCovid_grid{
+
+    display:grid;
+    grid-template: 2/2;
+    grid-template-areas: "confirmados fallecidos"
+                         "activos recuperados" ;
+    grid-column-gap:10px;
+    grid-row-gap:0px;
+
+    width: 80%; 
+}
+
+.countryCovid_box{
+
+    width: 100%;
+
+    &_title{
+        font-size: 20px;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+    &_data{
+        display: flex;
+        justify-content: space-around;
+        
+        padding-top: 15px;
+        padding-bottom: 20px;
+        
+        font-size: 17px;
+        font-weight: bold;
+
+        .icon{
+            display: block;
+            width: 25px;
+            height: 25px;
+        }
+    }
+    
+}
+
+
+
+
+
+

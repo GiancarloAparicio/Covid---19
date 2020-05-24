@@ -5,8 +5,9 @@ import Map from "./components/Map";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import './styles/index.css';
+import './scss/index.scss';  /*Cambiar a SCSS */
 import * as serviceWorker from './test/serviceWorker';
+
 
 const App=()=>{
     

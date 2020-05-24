@@ -1,3 +1,5 @@
+/**Codigo internacional de cada pais para poder selecionarlo */
+
 export const Countrys={
 	"AF": "Afghanistan",
 	"AO": "Angola",

@@ -1,6 +1,8 @@
 import React from "react";
 import {Sun,Moon} from "./Icons";
 
+import "../scss/header.scss";
+
 const Header=(props)=>{
 
     let change=()=>{ //Cambiamos el state de theme 
@@ -10,6 +12,7 @@ const Header=(props)=>{
     }
 
 
+    /**Renderizamos el header y controlamos el estado que se encarga del tema black o light*/
     return(
     <header>
         <h1>Covid-19</h1>

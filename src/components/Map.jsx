@@ -1,63 +1,35 @@
 
-import React,{useState,useEffect} from "react";
-import MapCountry from "./MapCountry";
+import React,{useState} from "react";
+import MapWorld from "./MapWorld";
 import CountryStats from "./CountryStats";
 import CountryCovid from "./CountryCovid";
 import WorldStats from "./WorldStats";
 
+import useFetch from "../hooks/useFetch";
+
 
 const Map=(props)=>{
 
-  const [country,setCountry]=useState("PE")
+  const [country,setCountry]=useState("PE") //default PERU
 
-  const [dataCovid,setDataCovid]=useState([])
-  const [dataCountry,setDataCountry]=useState([])
- 
-  const [loading,setLoading]=useState(false);
-
+  /**Apis para consultar infromacion */
   const ApiCovid=`https://api.covid19api.com/total/country/${country}`;
   const ApiCountry=`https://restcountries.eu/rest/v2/alpha/${country}`;
-  
 
- 
 
-  useEffect(()=>{
-    setLoading(true);
+  /**Creamos estados que guardaran la informacion el pais,codiv,... */
+  const dataCovid=useFetch(ApiCovid,[]); //Usamos la API de covid (hooks)
+  const dataCountry=useFetch(ApiCountry,[]); //Usamos la API de countrys(hooks)
 
-    const getDataCovid=()=>{
-      fetch(ApiCovid,{method:'get'})
-      .then(response => response.json())
-      .then(data => {
-        setDataCovid(data)
-        setLoading(false)
-      })
-      .catch(error => console.log('error', error));
-  
-    }
 
-    const getInfoCountry=()=>{
-      fetch(ApiCountry,{method:'get'})
-      .then(response => response.json())
-      .then(data => {
-        setDataCountry(data)
-        setLoading(false)
-      })
-      .catch(error => console.log('error', error));
-    }
-
-    getDataCovid();
-    getInfoCountry();
-
-  },[ApiCovid,ApiCountry,country])
-
- 
+  /**Renderizamos el mapa,informacion,...  */
   return(
     <div className="map">
-      {loading? console.log("cargando"):""}
-      <MapCountry theme={props.theme} country={country} setCountry={setCountry} />
+      {dataCountry?.loading? console.log("cargando"):""}
+      <MapWorld theme={props.theme} country={country} setCountry={setCountry} />
       <WorldStats />
-      <CountryStats dataCountry={dataCountry} loading={loading}/>
-      <CountryCovid dataCovid={dataCovid} />
+      <CountryStats dataCountry={dataCountry?.data} loading={dataCountry?.loading}/>
+      <CountryCovid dataCovid={dataCovid?.data} />
     </div>
   )
 }
