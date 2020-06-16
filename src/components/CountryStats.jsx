@@ -1,5 +1,5 @@
 import React from "react";
-import {People,Band} from "./Icons";
+import {People,Band} from "../Data/Icons";
 
 import "../scss/countryInfo.scss";
 

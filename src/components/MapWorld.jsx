@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 import country from "world-map-country-shapes";
 import svgPanZoom from "svg-pan-zoom";
-import {ZoomIn,ZoomOut,ZoomReset} from "./Icons";
+import {ZoomIn,ZoomOut,ZoomReset} from "../Data/Icons";
 
 
 import "../scss/mapWorld.scss";

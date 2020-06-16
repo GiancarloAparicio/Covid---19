@@ -10,6 +10,17 @@ header{
     margin-left: auto;
     margin-right: auto;
 
+    h1{
+        display: flex;
+        font-size: 28px;
+        font-family: 'Roboto', sans-serif;
+
+        .icon{
+            margin-left: 15px;
+            box-shadow: none;
+        }
+    }
+
     .icon{
         width: 35px;
         height: 35px;

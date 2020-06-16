@@ -1,5 +1,5 @@
 import React from "react";
-import {Confirmados,Activos,Fallecidos,Recuperados} from "./Icons";
+import {Confirmados,Activos,Fallecidos,Recuperados} from "../Data/Icons";
 
 import "../scss/countryInfoCovid.scss";
 

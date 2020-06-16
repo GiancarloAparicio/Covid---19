@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from "react";
 import ReactDOM from 'react-dom';
 
-import Map from "./components/Map";
 import Header from "./components/Header";
+import Map from "./components/Map";
+import Char from "./components/Char";
 import Footer from "./components/Footer";
 
 import './scss/index.scss';  /*Cambiar a SCSS */
@@ -23,6 +24,7 @@ const App=()=>{
       <div> 
           <Header theme={theme} setTheme={setTheme}/>
           <Map theme={theme}/>
+          <Char />
           <Footer />
       </div>
   )

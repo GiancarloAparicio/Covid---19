@@ -1,5 +1,5 @@
 import React from "react";
-import {Confirmados,Fallecidos,Recuperados} from "./Icons";
+import {Confirmados,Fallecidos,Recuperados} from "../Data/Icons";
 import useFetch from "../hooks/useFetch";
 
 import "../scss/worldStats.scss";
@@ -23,7 +23,7 @@ const WorldStats=(props)=>{
             <div className="worldStats_stats">
 
                 <p className="worldStats_text yellow">
-                    Confirmados: <strong> {dataWorld?.data?.TotalConfirmed}</strong> <Confirmados />
+                    Positivos: <strong> {dataWorld?.data?.TotalConfirmed}</strong> <Confirmados />
                 </p>
 
                 <p className="worldStats_text red">
@@ -31,7 +31,7 @@ const WorldStats=(props)=>{
                 </p>
 
                 <p className="worldStats_text green">
-                    Recuperados: <strong> {dataWorld?.data?.TotalRecovered}</strong> <Recuperados />
+                    Sanados: <strong> {dataWorld?.data?.TotalRecovered}</strong> <Recuperados />
                 </p>
             </div>
         </div>
