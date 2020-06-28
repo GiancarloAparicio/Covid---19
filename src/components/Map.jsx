@@ -21,7 +21,7 @@ const Map = (props) => {
 	/**Renderizamos el mapa,informacion,...  */
 	return (
 		<div className='map'>
-			{dataCountry?.loading ? console.log('cargando') : ''}
+			{dataCountry?.loading ? /*console.log('cargando')*/ null : ''}
 			<MapWorld
 				theme={props.theme}
 				country={country}

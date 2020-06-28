@@ -3,7 +3,6 @@ import {Line} from 'react-chartjs-2';
 import '../scss/char.scss';
 
 const LineChar = (props) => {
-	console.log(props.data);
 	let stats = props.data?.length > 50 ? getData(props.data) : [];
 	let background = props.data?.length > 50 ? getBackground(stats) : [];
 
