@@ -1,63 +1,63 @@
-.map{
-    max-width: 1800px;
-    margin-left: auto;
-    margin-right: auto;
+.map {
+	max-width: 1800px;
+	margin-left: auto;
+	margin-right: auto;
 
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 
+	.mapSVG {
+		//Contenerdor del mapa
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
 
-    .mapSVG{  //Contenerdor del mapa
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
+		position: relative;
 
-        position: relative;
+		overflow: hidden;
+		height: 100%;
 
-        overflow: hidden;
-        height: 100%;
+		background-image: linear-gradient(
+			90deg,
+			rgba(118, 171, 255, 0.1) 0%,
+			rgba(118, 171, 255, 0.4) 40%,
+			rgba(118, 171, 255, 0.4) 60%,
+			rgba(118, 171, 255, 0.1) 100%
+		);
 
-        background-image: linear-gradient(90deg, rgba(118, 171, 255, 0.1) 0%,
-                          rgba(118, 171, 255, 0.4) 40%,
-                          rgba(118, 171, 255, 0.4) 60%, 
-                          rgba(118, 171, 255, 0.1) 100%);
+		background-color: rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+			0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-        background-color: rgba(0,0,0,.1);
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
-                    0 3px 1px -2px rgba(0,0,0,0.12), 
-                    0 1px 5px 0 rgba(0,0,0,0.2);
+		border-radius: 15px;
+		margin: 10px;
+	}
 
-        border-radius: 15px;
-        margin: 10px;
-    }
-    
-    .worldSVG{  //Propio mapa formato SVG
-        display:block;
-        object-fit: cover;
+	.worldSVG {
+		//Propio mapa formato SVG
+		display: block;
+		object-fit: cover;
+		height: 380px;
 
-        path{
-            transition: fill .3s linear;
-        }
-    }
-
-    
+		path {
+			transition: fill 0.3s linear;
+		}
+	}
 }
 
+@media (min-width: 768px) {
+	.map {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
 
-@media(min-width:768px){
-    
-    .map{
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+		padding: 15px 20px;
 
-        padding: 15px 20px;
-
-        .mapSVG{
-            width: 60%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
+		.mapSVG {
+			width: 60%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
 }

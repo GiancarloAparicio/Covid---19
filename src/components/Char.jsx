@@ -1,13 +1,16 @@
-import React from "react";
-import LineChar from "../char/LineChar";
+import React from 'react';
+import LineChar from '../char/LineChar';
+import PieChar from '../char/PieChar';
 
-const Char=()=>{
+const Char = (props) => {
+	let stats = props.dataCovid[props.dataCovid.length - 1];
 
-    return(
-        
-        <LineChar />
-
-    );
-}
+	return (
+		<div id='charts'>
+			<LineChar data={props.dataCovid} />
+			<PieChar data={stats} />
+		</div>
+	);
+};
 
 export default Char;
