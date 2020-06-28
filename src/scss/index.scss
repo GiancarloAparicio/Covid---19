@@ -1,88 +1,81 @@
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-body{
-    color:#EEEEEE;
+body {
+	color: #eeeeee;
 }
 
-.dark{
-    background-color:#19222B;
-    
+.dark {
+	background-color: #19222b;
 }
 
-.light{
-   
-    background-color:#EEEEEE;
+.light {
+	background-color: #eeeeee;
 
-    header{
-        background-color: #206ABE;      
-    }
+	header {
+		background-color: #206abe;
+	}
 }
 
 .dark,
 .light,
-header{
-    transition: background-color .3s linear, color .3s linear;
+header {
+	transition: background-color 0.3s linear, color 0.3s linear;
 }
 
-p{
-    font-family: 'Roboto', sans-serif;
-    font-weight: blod;
-    text-align: center;
+p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: blod;
+	text-align: center;
 }
 
-.card{
-    background-color:#19222B;
-   
-    box-shadow: 0px 0px 0px hsla(0,0%,100%,0.05),
-                0px 0px 0px rgba(0,0,0,0.5),
-                inset -5px -5px 10px hsla(0,0%,100%,0.05),
-                inset 5px 5px 15px rgba(0,0,0,0.5);
+.card {
+	background-color: #19222b;
 
-    border-radius: 10px;
-    margin-top: 10px;
+	box-shadow: 0px 0px 0px hsla(0, 0%, 100%, 0.05),
+		0px 0px 0px rgba(0, 0, 0, 0.5),
+		inset -5px -5px 10px hsla(0, 0%, 100%, 0.05),
+		inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+
+	border-radius: 10px;
+	margin-top: 10px;
 }
 
-.icon{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
-                0 3px 1px -2px rgba(0,0,0,0.12), 
-                0 1px 5px 0 rgba(0,0,0,0.2);
+	overflow: hidden;
+	border-radius: 50%;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+		0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-
-svg{
-    width: 100%;
-    height: 100%;
+svg {
+	width: 100%;
+	height: 100%;
 }
 
-
-.yellow{
-    color: #F0C302;
-    grid-area:confirmados;
+.yellow {
+	color: #f0c302;
+	grid-area: confirmados;
 }
 
-.red{
-    color:#FF3A3A;
-    grid-area:fallecidos;
+.red {
+	color: #ff3a3a;
+	grid-area: fallecidos;
 }
 
-.blue{
-    color:#1273EB;
-    grid-area:activos;
+.blue {
+	color: #1273eb;
+	grid-area: activos;
 }
 
-.green{
-    color:#00D098;
-    grid-area:recuperados;
+.green {
+	color: #00d098;
+	grid-area: recuperados;
 }

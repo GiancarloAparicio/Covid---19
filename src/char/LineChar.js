@@ -3,6 +3,7 @@ import {Line} from 'react-chartjs-2';
 import '../scss/char.scss';
 
 const LineChar = (props) => {
+	console.log(props.data);
 	let stats = props.data?.length > 50 ? getData(props.data) : [];
 	let background = props.data?.length > 50 ? getBackground(stats) : [];
 
@@ -10,11 +11,11 @@ const LineChar = (props) => {
 		labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Junio', 'Julio'],
 		datasets: [
 			{
-				label: 'Peru',
+				label: props.data[0]?.Country,
 				data: stats,
 				backgroundColor: background,
 				borderColor: ['rgba(255, 99, 132, 0.5)'],
-				borderWidth: 2,
+				borderWidth: 5,
 			},
 			/** Json() graficas **/
 		],
