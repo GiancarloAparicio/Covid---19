@@ -23,6 +23,9 @@
 	grid-area: circle;
 }
 
+/*
+*   Canvas permite CSS y la unica manera de manipularlo en con !important
+*/
 #circle,
 #line {
 	width: 100% !important;
