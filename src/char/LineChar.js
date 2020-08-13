@@ -1,13 +1,32 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import '../scss/char.scss';
+
+const getMonths = () => {
+	let date = new Date();
+	let Months = [
+		'Enero',
+		'Febrero',
+		'Marzo',
+		'Abril',
+		'Junio',
+		'Julio',
+		'Agosto',
+		'Septiembre',
+		'Octubre',
+		'Noviembre',
+		'Diciembre',
+	];
+
+	return Months.slice(0, date.getMonth());
+};
 
 const LineChar = (props) => {
 	let stats = props.data?.length > 50 ? getData(props.data) : [];
 	let background = props.data?.length > 50 ? getBackground(stats) : [];
 
 	let data = {
-		labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Junio', 'Julio'],
+		labels: getMonths(),
 		datasets: [
 			{
 				label: props.data[0]?.Country,
@@ -27,7 +46,7 @@ const LineChar = (props) => {
 				data={data}
 				height={250}
 				width={40}
-				options={{maintainAspectRatio: false}}
+				options={{ maintainAspectRatio: false }}
 			/>
 		</div>
 	);
