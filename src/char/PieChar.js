@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 
 const PieChar = (props) => {
 	let data = {
@@ -29,15 +29,18 @@ const PieChar = (props) => {
 			<p className='title'>
 				Casos confirmados:{' '}
 				<strong className='yellow'>
-					{props.data ? props.data.Confirmed : 0}
-				</strong>
-			</p>
+					{' '}
+					{props.data ? props.data.Confirmed : 0}{' '}
+				</strong>{' '}
+			</p>{' '}
 			<Pie
 				data={data}
 				height={250}
 				width={40}
-				options={{maintainAspectRatio: false}}
-			/>
+				options={{
+					maintainAspectRatio: false,
+				}}
+			/>{' '}
 		</div>
 	);
 };

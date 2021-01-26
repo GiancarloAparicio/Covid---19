@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './components/Header';
@@ -6,7 +6,7 @@ import Map from './components/Map';
 
 import Footer from './components/Footer';
 
-import './scss/index.scss'; /*Cambiar a SCSS */
+import './scss/index.scss';
 import * as serviceWorker from './test/serviceWorker';
 
 const App = () => {

@@ -22,8 +22,8 @@ const getMonths = () => {
 };
 
 const LineChar = (props) => {
-	let stats = props.data?.length > 50 ? getData(props.data) : [];
-	let background = props.data?.length > 50 ? getBackground(stats) : [];
+	let stats = props.data?.length ? getData(props.data) : [];
+	let background = props.data?.length ? getBackground(stats) : [];
 
 	let data = {
 		labels: getMonths(),
