@@ -1,7 +1,7 @@
 import React from 'react';
-import '../scss/footer.scss';
+import '../../scss/footer.scss';
 
-const Footer = (props) => {
+const Footer = () => {
 	return (
 		<footer className='card footer'>
 			<p>

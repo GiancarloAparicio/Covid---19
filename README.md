@@ -6,13 +6,13 @@ Created using React.js and Sass
 
 ### Covid-19 Map
 
-![Map](./map.jpg)
+![Map](./docs/map.jpg)
 
 ### Covid Chart
 
-![Map](./Photo-2.jpg)
+![Map](./docs/Photo-2.jpg)
 
-### Creditos:
+### Credits:
 
 <https://api.covid19api.com>
 

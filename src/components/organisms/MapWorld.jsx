@@ -1,35 +1,30 @@
-import React, {Component} from 'react';
+import ControlsMapSvg from '../molecules/ControlsMapSvg';
 import country from 'world-map-country-shapes';
+import React, { Component } from 'react';
+import '../../scss/mapWorldControl.scss';
 import svgPanZoom from 'svg-pan-zoom';
+import '../../scss/mapWorld.scss';
 import Hammer from 'hammerjs';
-import {ZoomIn, ZoomOut, ZoomReset} from '../Data/Icons';
-
-import '../scss/mapWorld.scss';
-import '../scss/mapWorldControl.scss';
 
 class MapWorld extends Component {
 	constructor(props) {
-		super();
+		super()
 
-		/**Creamos referencias para poder controlar el SVG con JavaScript */
 		this.mapSvg = React.createRef();
 		this.zoomIn = React.createRef();
 		this.zoomOut = React.createRef();
 		this.zoomReset = React.createRef();
 
-		/**Variable que almacenara el o los paises que el usuario eliga */
 		this.state = {
-			selectedCountries: {PE: true},
+			selectedCountry: { PE: true },
 		};
 	}
 
-	/**Manipulamos el SVG para poder movernos atraves de el (CONFIGURACION) */
 	beforePan = function (oldPan, newPan) {
 		let gutterWidth = 100;
 		let gutterHeight = 100;
-
-		/**Limitamos el movimiento de SVG para que tenga un maximo */
 		let sizes = this.getSizes();
+
 		let leftLimit =
 			-((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) +
 			gutterWidth;
@@ -60,45 +55,38 @@ class MapWorld extends Component {
 				'touchleave',
 				'touchcancel',
 			],
+
 			init: function (options) {
 				var instance = options.instance,
 					initialScale = 1,
 					pannedX = 0,
 					pannedY = 0;
 
-				/*Hammer*/
-				// Listen solo a los eneventos tactiles y punteros
 				this.hammer = Hammer(options.svgElement, {
 					inputClass: Hammer.SUPPORT_POINTER_EVENTS
 						? Hammer.PointerEventInput
 						: Hammer.TouchInput,
 				});
 
-				// Evento arriba y abajo (Peñisco)
-				this.hammer.get('pinch').set({enable: true});
+				this.hammer.get('pinch').set({ enable: true });
 
-				// Evento doble toque
 				this.hammer.on('doubletap', function (ev) {
 					instance.zoomIn();
 				});
 
-				// Manejador SVG Panoramico
 				this.hammer.on('panstart panmove', function (ev) {
-					// Paranoramico reinica las variables
 					if (ev.type === 'panstart') {
 						pannedX = 0;
 						pannedY = 0;
 					}
 
-					// Diferencia entre puntos Panoramicos
-					instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY});
+					instance.panBy({ x: ev.deltaX - pannedX, y: ev.deltaY - pannedY });
 					pannedX = ev.deltaX;
 					pannedY = ev.deltaY;
 				});
 
-				// Manejador pinch
 				this.hammer.on('pinchstart pinchmove', function (ev) {
-					// Pinch maneja y guarda el zoom inicial
+
 					if (ev.type === 'pinchstart') {
 						initialScale = instance.getZoom();
 						instance.zoomAtPoint(initialScale * ev.scale, {
@@ -113,7 +101,6 @@ class MapWorld extends Component {
 					});
 				});
 
-				// Contro sobre el SVG para no perder el flujo al desplazarce
 				options.svgElement.addEventListener('touchmove', function (e) {
 					e.preventDefault();
 				});
@@ -124,7 +111,6 @@ class MapWorld extends Component {
 			},
 		};
 
-		/**Selecionamos el SVG y le damos la configuracion previa */
 		let mapWorld = svgPanZoom(this.mapSvg.current, {
 			panEnabled: true,
 			zoomEnabled: true,
@@ -140,31 +126,25 @@ class MapWorld extends Component {
 			customEventsHandler: eventsHandler,
 		});
 
-		/**Controladores para hacer zoom,zoomIn,... */
 		this.zoomIn.current.addEventListener('click', () => mapWorld.zoomIn());
 		this.zoomOut.current.addEventListener('click', () => mapWorld.zoomOut());
-		this.zoomReset.current.addEventListener('click', () =>
-			mapWorld.resetZoom()
-		);
+		this.zoomReset.current.addEventListener('click', () => mapWorld.resetZoom());
 	}
 
-	/**Guardamos el pais selecionado (Se puede elegir mas de un pais) */
 	toggleCountry = (country) => {
 		this.props.setCountry(country.id);
 
-		const {selectedCountries} = this.state;
+		const { selectedCountry } = this.state;
 
 		this.setState({
-			selectedCountries: {
-				// ...selectedCountries,  /**Selecionar mas de un pais*/
-				[country.id]: !selectedCountries[country.id],
+			selectedCountry: {
+				[country.id]: !selectedCountry[country.id],
 			},
 		});
 	};
 
-	/**Renderizamos el mapa SVG */
 	render() {
-		const {selectedCountries} = this.state;
+		const { selectedCountry } = this.state;
 
 		const mapCountries = country.map((country) => (
 			<path
@@ -173,19 +153,19 @@ class MapWorld extends Component {
 				style={
 					this.props.theme === 'dark'
 						? {
-								fill: selectedCountries[country.id]
-									? '#4479E9'
-									: 'white',
-								cursor: 'pointer',
-								stroke: '#ccc',
-						  }
+							fill: selectedCountry[country.id]
+								? '#4479E9'
+								: 'white',
+							cursor: 'pointer',
+							stroke: '#ccc',
+						}
 						: {
-								fill: selectedCountries[country.id]
-									? '#dd6b20'
-									: '#1F2028',
-								cursor: 'pointer',
-								stroke: '#ccc',
-						  }
+							fill: selectedCountry[country.id]
+								? '#dd6b20'
+								: '#1F2028',
+							cursor: 'pointer',
+							stroke: '#ccc',
+						}
 				}
 				onClick={() => this.toggleCountry(country)}
 			/>
@@ -202,23 +182,12 @@ class MapWorld extends Component {
 					{mapCountries}
 				</svg>
 
-				{/**Controles para poder hacer zoom,zoomIn,... */}
-				<div className='mapsWorldControl'>
-					<button className='icon' ref={this.zoomIn}>
-						<ZoomIn />
-					</button>
+				<ControlsMapSvg zoomIn={this.zoomIn} zoomOut={this.zoomOut} zoomReset={this.zoomReset} />
 
-					<button className='icon' ref={this.zoomOut}>
-						<ZoomOut />
-					</button>
-
-					<button className='icon' ref={this.zoomReset}>
-						<ZoomReset />
-					</button>
-				</div>
 			</div>
 		);
 	}
 }
+
 
 export default MapWorld;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
-const PieChar = (props) => {
+const PieChart = (props) => {
+
 	let data = {
 		labels: ['Recuperados', 'Fallecidos', 'Activos'],
 		datasets: [
@@ -20,19 +21,17 @@ const PieChar = (props) => {
 				borderWidth: 2,
 			},
 
-			/** Json() graficas **/
 		],
 	};
 
 	return (
 		<div id='circle' className='card'>
 			<p className='title'>
-				Casos confirmados:{' '}
+				Casos confirmados:
 				<strong className='yellow'>
-					{' '}
 					{props.data ? props.data.Confirmed : 0}{' '}
-				</strong>{' '}
-			</p>{' '}
+				</strong>
+			</p>
 			<Pie
 				data={data}
 				height={250}
@@ -40,9 +39,9 @@ const PieChar = (props) => {
 				options={{
 					maintainAspectRatio: false,
 				}}
-			/>{' '}
+			/>
 		</div>
 	);
 };
 
-export default PieChar;
+export default PieChart;

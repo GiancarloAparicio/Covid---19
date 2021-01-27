@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Header from './components/Header';
-import Map from './components/Map';
-
-import Footer from './components/Footer';
-
 import './scss/index.scss';
 import * as serviceWorker from './test/serviceWorker';
+import Home from './components/templates/Home';
 
 const App = () => {
-	const [theme, setTheme] = useState('light');
-
-	useEffect(() => {
-		let $body = document.querySelector('body');
-		$body.className = theme;
-	});
-
+	
 	return (
-		<div>
-			<Header theme={theme} setTheme={setTheme} />
-			<Map theme={theme} />
-			<Footer />
-		</div>
+		<Home />
 	);
 };
 

@@ -1,35 +1,31 @@
 import React from "react";
-import {People,Band} from "../Data/Icons";
+import PeopleIcon from "../icons/PeopleIcon"
+import BandIcon from "../icons/BandIcon"
 
-import "../scss/countryInfo.scss";
+import "../../scss/countryInfo.scss";
 
+const CountryStats = ({ dataCountry }) => {
 
-const CountryStats=(props)=>{
-
-    /**Recibimos la informacion del pais y la almacenamos */
-    const dataCountry=props.dataCountry
-
-    /**Renderizamos la informacion */
-    return(
+    return (
         <div className="countryInfo card">
-            <img src={dataCountry?.flag}   
-                 alt={dataCountry?.alpha2Code} 
-                 className="countryInfo_flag"/>
+            <img src={dataCountry?.flag}
+                alt={dataCountry?.alpha2Code}
+                className="countryInfo_flag" />
 
             <div className="countryInfo_data">
                 <p className="countryName">{dataCountry?.name}</p>
-                
+
                 <div className="countryStats">
                     <div className="countryStats_population">
-                        <People />
+                        <PeopleIcon />
                         <p>{dataCountry?.population}</p>
                     </div>
                     <div className="countryStats_flag">
-                        <Band />
+                        <BandIcon />
                         <p>{dataCountry?.area}</p>
                     </div>
-                </div>       
-            </div>   
+                </div>
+            </div>
         </div>
     )
 }
