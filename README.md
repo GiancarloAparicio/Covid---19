@@ -2,8 +2,6 @@
 
 Created using React.js and Sass
 
-[Demo Page](https://giancarloaparicio.github.io/Covid---19/)
-
 ### Covid-19 Map
 
 ![Map](./docs/map.jpg)
